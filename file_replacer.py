@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 import os
 import shutil
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, \
-    QFileDialog, QMessageBox, QScrollArea, QFrame, QGridLayout, QFormLayout
+    QFileDialog, QMessageBox, QScrollArea, QFrame, QFormLayout
 from PyQt6.QtCore import Qt, QSettings
 import configparser
 
@@ -82,7 +83,7 @@ class FileReplaceTool(QWidget):
 
     def load_config(self):
         if os.path.exists(config_file):
-            config.read(config_file)
+            config.read(config_file, encoding='utf-8')
             self.target_path_entry.setText(config.get('DEFAULT', 'audio_path', fallback=''))
             num_files = config.getint('DEFAULT', 'num_files', fallback=1)
             for i in range(num_files):
